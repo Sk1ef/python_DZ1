@@ -10,5 +10,6 @@ except ZeroDivisionError:
 
 else:
     print(result)
+
 finally:
     print("Завершение работы программы")
