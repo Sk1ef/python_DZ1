@@ -2,6 +2,7 @@ try:
     first_number = float(input())
     second_number = float(input())
     result = first_number / second_number
+
 except ValueError:
     print("Ошибка: введено не число")
 
