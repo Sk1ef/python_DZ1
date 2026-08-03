@@ -1,16 +1,22 @@
 def max_number(a, b):
-    if a >= b:
-        return a
-    else:
-        return b
+    try:
+        if a >= b:
+            return a
+        else:
+            return b
+    except TypeError:
+        print("Невозможно сравнить")
+
 
 def empty_function():
     pass
 
+
 def even_numbers(n):
-    for i in range(0, n+1):
+    for i in range(0, n + 1):
         if i % 2 == 0:
             yield i
+
 
 assert max_number(5, 3) == 5, "Error"
 assert max_number(10, 10) == 10, "Error"
