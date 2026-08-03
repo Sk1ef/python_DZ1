@@ -6,6 +6,7 @@ def max_number(a, b):
             return b
     except TypeError:
         print("Невозможно сравнить")
+        exit()
 
 
 def empty_function():
@@ -18,7 +19,7 @@ def even_numbers(n):
             yield i
 
 
-assert max_number(5, 3) == 5, "Error"
+assert max_number("5", 3) == 5, "Error"
 assert max_number(10, 10) == 10, "Error"
 assert max_number(3, 2) == 3, "Error"
 assert max_number(4, 8) == 8, "Error"
