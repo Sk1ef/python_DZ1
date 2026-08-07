@@ -1,36 +1,65 @@
 from collections import Counter
 
-text = input("Введите текст: ").lower().strip()
-if not text:
-    print("Ошибка: Пустая строка")
-    exit()
-
-punct = """!'()",.:;?{}"""
-vowels = ["а", "е", "ё", "и", "о", "у", "ы", "э", "ю", "я"]
-text_no_punctuation = ""
-vowels_counter = 0
-words_counter = 0
-longest_word = ""
 
 # удаление знаков препинаний
-for i in text:
-    if i not in punct:
-        text_no_punctuation += i
-text_words = text_no_punctuation.split()
+def remove_punctuation(text):
+    punct = """!'()",.:;?{}"""
+    result = ""
+
+    for char in text:
+        if char not in punct:
+            result += char
+
+    return result
+
+
+# кол-во слов
+def count_words(words):
+    counter = 0
+
+    for i in words:
+        counter += 1
+
+    return counter
+
 
 # самое длинное слово
-longest_word = max(text_words, key=len)
+def find_longest_word(words):
+    return max(words, key=len)
 
-# подсчет слов
-for i in text_words:
-    words_counter += 1
 
-# подсчет гласных
-for i in text:
-    if i in vowels:
-        vowels_counter += 1
+# кол-во глассных
+def count_vowels(text):
+    vowels = "аеёиоуыэюя"
+    counter = 0
 
-print(f"самое длинное слово: {longest_word}")
-print(f"кол-во слов: {words_counter}")
-print(f"кол-во гласных: {vowels_counter}")
-print(Counter(text_words))
+    for char in text:
+        if char in vowels:
+            counter += 1
+
+    return counter
+
+
+# Подсчитывает, сколько раз каждое слово встречается в тексте
+def count_word_frequency(words):
+    return Counter(words)
+
+
+# вызов функций и вывод
+def main():
+    text = input("Введите текст: ").lower().strip()
+
+    if not text:
+        print("Ошибка: Пустая строка")
+        return
+
+    text_without_punct = remove_punctuation(text)
+    words = text_without_punct.split()
+
+    print(f"Самое длинное слово: {find_longest_word(words)}")
+    print(f"Количество слов: {count_words(words)}")
+    print(f"Количество гласных: {count_vowels(text)}")
+    print(count_word_frequency(words))
+
+
+main()
