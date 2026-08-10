@@ -8,16 +8,16 @@ def sum_even_numbers():
 
 
 def squares():
-    return [x ** 2 for x in range(1, 11) if x % 2 != 0]
+    return [x ** 2 for x in range(1, 11, 2)]
 
 
 def count_user_input():
     count = 0
-    number = float(input("Введите число: "))
+    number = 0
 
     while number >= 0:
-        count += 1
         number = float(input("Введите число: "))
+        count += 1
 
     return count
 
