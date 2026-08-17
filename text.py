@@ -1,7 +1,4 @@
-from collections import Counter
-
-
-# удаление знаков препинаний
+# удаление знаков препинания
 def remove_punctuation(text):
     punct = """!'()",.:;?{}"""
     result = ""
@@ -13,14 +10,9 @@ def remove_punctuation(text):
     return result
 
 
-# кол-во слов
+# количество слов
 def count_words(words):
-    counter = 0
-
-    for i in words:
-        counter += 1
-
-    return counter
+    return len(words)
 
 
 # самое длинное слово
@@ -28,7 +20,7 @@ def find_longest_word(words):
     return max(words, key=len)
 
 
-# кол-во глассных
+# количество гласных
 def count_vowels(text):
     vowels = "аеёиоуыэюя"
     counter = 0
@@ -40,9 +32,17 @@ def count_vowels(text):
     return counter
 
 
-# Подсчитывает, сколько раз каждое слово встречается в тексте
+# подсчитывает, сколько раз каждое слово встречается в тексте
 def count_word_frequency(words):
-    return Counter(words)
+    frequency = {}
+
+    for word in words:
+        if word in frequency:
+            frequency[word] += 1
+        else:
+            frequency[word] = 1
+
+    return frequency
 
 
 # вызов функций и вывод
