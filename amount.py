@@ -1,18 +1,17 @@
-def create_arr(arr1, arr2):
-    new_arr = []
+def create_new_list(first_list, second_list):
+    new_list = []
 
-    for i in range(min(len(arr1), len(arr2))):
-        new_arr.append(arr1[i] + arr2[i])
+    for i in range(min(len(first_list), len(second_list))):
+        new_list.append(first_list[i] + second_list[i])
 
-    return new_arr
+    return new_list
 
 
 def main():
-    arr1 = [1, 2, 3, 4, 5]
-    arr2 = [6, 7, 8]
+    first_list = [1, 2, 3, 4, 5]
+    second_list = [6, 7, 8, 9, 10]
 
-    print(create_arr(arr1, arr2))
+    print(create_new_list(first_list, second_list))
 
 
 main()
-
