@@ -5,6 +5,7 @@ def book_list_view(library):
         for key in library:
             print(key)
 
+
 library = {
     "Гарри Поттер и философский камень": {
         "автор": "Дж. К. Роулинг",
