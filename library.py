@@ -1,7 +1,9 @@
 def book_list_view(library):
-    for key in library:
-        print(key, "-", library[key]["наличие"])
-
+    if not library:
+        print("Книг нет")
+    else:
+        for key in library:
+            print(key)
 
 library = {
     "Гарри Поттер и философский камень": {
