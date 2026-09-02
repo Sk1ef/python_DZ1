@@ -1,25 +1,27 @@
 def book_list_view(library):
-    for key in library:
-        print(key, "-", library[key]["наличие"])
+    if not library:
+        print("Книг нет")
+    else:
+        for key in library:
+            print(key)
 
 
 def add_book(title, author, year):
     if title in library:
         answer = input("Такая книга уже существует. Обновить информацию? (да/нет): ")
         if answer.lower() == "да":
-            library[title]["автор"] = author
-            library[title]["год"] = year
             print(f'Информация о книге "{title}" успешно обновлена.')
         else:
             print("Информация не была изменена.")
-
+            return
     else:
-        library[title] = {
-            "автор": author,
-            "год": year,
-            "наличие": None
-        }
         print(f'Книга "{title}" успешно добавлена.')
+
+    library[title] = {
+        "автор": author,
+        "год": year,
+        "наличие": library[title]["наличие"] if title in library else None
+    }
 
 
 library = {
