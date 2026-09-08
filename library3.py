@@ -6,7 +6,7 @@ def book_list_view(library):
             print(key)
 
 
-def add_book(title, author, year):
+def add_book(library, title, author, year):
     if title in library:
         answer = input("Такая книга уже существует. Обновить информацию? (да/нет): ")
         if answer.lower() == "да":
@@ -24,7 +24,7 @@ def add_book(title, author, year):
     }
 
 
-def remove_book(title):
+def remove_book(library, title):
     if title in library:
         del library[title]
         print(f'Книга "{title}" успешно удалена')
@@ -55,6 +55,6 @@ library = {
     }
 }
 
-remove_book("Мастер и Маргарита")
-add_book("Преступление и наказание", "Фёдор Достоевский", 1866)
+remove_book(library, "Мастер и Маргарита")
+add_book(library, "Преступление и наказание", "Фёдор Достоевский", 1866)
 book_list_view(library)
