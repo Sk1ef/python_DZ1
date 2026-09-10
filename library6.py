@@ -84,9 +84,60 @@ library = {
     }
 }
 
-remove_book(library, "Мастер и Маргарита")
-add_book(library, "Преступление и наказание", "Фёдор Достоевский", 1866)
-issue_book(library, "Гарри Поттер и философский камень")
-return_book(library, "Война и мир")
-find_book(library, "1984")
-book_list_view(library)
+
+def main(library):
+    while True:
+        print("1. Вывести названия всех книг в библиотеке\n"
+              "2. Добавить книгу\n"
+              "3. Удалить книгу\n"
+              "4. Выдача книги\n"
+              "5. Возврат книги\n"
+              "6. Поиск книги\n"
+              "7. Выход")
+
+        try:
+            num = int(input("Введите номер операции от 1 до 7: "))
+        except ValueError:
+            print("Введено не число")
+            continue
+
+        if num == 1:
+            book_list_view(library)
+
+        elif num == 2:
+            title = input("Введите название произведения: ")
+            author = input("Введите автора: ")
+            year = int(input("Введите год: "))
+            add_book(library, title, author, year)
+
+        elif num == 3:
+            title = input("Введите название книги: ")
+            remove_book(library, title)
+
+        elif num == 4:
+            title = input("Введите название книги: ")
+            issue_book(library, title)
+
+        elif num == 5:
+            title = input("Введите название книги: ")
+            return_book(library, title)
+
+        elif num == 6:
+            title = input("Введите название книги: ")
+            find_book(library, title)
+
+        elif num == 7:
+            print("Работа завершена")
+            break
+
+        else:
+            print("Неверный номер операции")
+
+
+main(library)
+# remove_book(library, "Мастер и Маргарита")
+# add_book(library, "Преступление и наказание", "Фёдор Достоевский", 1866)
+# issue_book(library, "Гарри Поттер и философский камень")
+# return_book(library, "Война и мир")
+# find_book(library, "1984")
+# book_list_view(library)
