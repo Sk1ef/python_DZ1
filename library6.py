@@ -107,7 +107,11 @@ def main(library):
         elif num == 2:
             title = input("Введите название произведения: ")
             author = input("Введите автора: ")
-            year = int(input("Введите год: "))
+            try:
+                year = int(input("Введите год: "))
+            except ValueError:
+                print("Введите год в формате числа")
+                continue
             add_book(library, title, author, year)
 
         elif num == 3:
