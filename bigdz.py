@@ -83,14 +83,6 @@ def show_total_average(students):
     print(f"Общий средний балл: {total_average:.2f}")
 
 
-students = [
-    {"name": "Harry", "grades": [80, 90, 78]},
-    {"name": "Hermione", "grades": [95, 90, 97]},
-    {"name": "Ron", "grades": [60, 70, 64]},
-    {"name": "Draco", "grades": [60, 75, 70]}
-]
-
-
 def main(students):
     while True:
         print(
@@ -142,5 +134,12 @@ def main(students):
         else:
             print("Неверный номер операции")
 
+
+students = [
+    {"name": "Harry", "grades": [80, 90, 78]},
+    {"name": "Hermione", "grades": [95, 90, 97]},
+    {"name": "Ron", "grades": [60, 70, 64]},
+    {"name": "Draco", "grades": [60, 75, 70]}
+]
 
 main(students)
