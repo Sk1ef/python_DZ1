@@ -1,5 +1,12 @@
 def calculate_average(grades):
-    return sum(grades) / len(grades)
+    try:
+        if not grades:
+            return 0
+
+        return sum(grades) / len(grades)
+    except TypeError:
+        print("Оценки должны быть числами")
+        return 0
 
 
 def calculate_total_average(students):
@@ -36,12 +43,39 @@ def show_students(students):
 
 
 def add_student(students, name, grades):
+    try:
+        if not grades:
+            print("Нужно ввести хотя бы одну оценку")
+            return
+
+        grades = [int(grade) for grade in grades]
+
+    except (ValueError, TypeError):
+        print("Оценки должны быть списком чисел")
+        return
+
     students.append({"name": name, "grades": grades})
 
     print(f'Студент "{name}" успешно добавлен.')
 
     total_average = calculate_total_average(students)
     print(f"Общий средний балл: {total_average:.2f}")
+
+
+def add_student_from_input(students):
+    name = input("Введите имя студента: ")
+
+    grades_input = input(
+        "Введите оценки через пробел: "
+    )
+
+    try:
+        grades = [int(grade) for grade in grades_input.split()]
+    except ValueError:
+        print("Оценки должны быть числами")
+        return
+
+    add_student(students, name, grades)
 
 
 def remove_worst_student(students):
@@ -84,6 +118,13 @@ def show_total_average(students):
 
 
 def main(students):
+    menu = {
+        1: show_students,
+        2: show_total_average,
+        3: add_student_from_input,
+        4: remove_worst_student
+    }
+
     while True:
         print(
             "\n1. Показать всех студентов\n"
@@ -99,38 +140,12 @@ def main(students):
             print("Введено не число")
             continue
 
-        if num == 1:
-            show_students(students)
-
-        elif num == 2:
-            show_total_average(students)
-
-        elif num == 3:
-            name = input("Введите имя студента: ")
-
-            grades_input = input(
-                "Введите оценки через пробел: "
-            )
-
-            try:
-                grades = [int(grade) for grade in grades_input.split()]
-            except ValueError:
-                print("Оценки должны быть числами")
-                continue
-
-            if not grades:
-                print("Нужно ввести хотя бы одну оценку")
-                continue
-
-            add_student(students, name, grades)
-
-        elif num == 4:
-            remove_worst_student(students)
-
-        elif num == 5:
+        if num == 5:
             print("Работа завершена")
             break
 
+        if num in menu:
+            menu[num](students)
         else:
             print("Неверный номер операции")
 
