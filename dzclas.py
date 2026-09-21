@@ -33,21 +33,39 @@ class ToDoList:
             status = "✓" if completed else " "
             print(f"[{status}] {task}")
 
+    def main(self):
+        menu = {
+            1: ("Добавить новую задачу", self.add_task),
+            2: ("Выполнить задачу", self.complete_task),
+            3: ("Удалить задачу", self.remove_task),
+            4: ("Показать задачи", self.list_tasks),
+            5: ("Выход", None)
+        }
+
+        while True:
+            for number in menu:
+                print(f"{number}. {menu[number][0]}")
+
+            try:
+                num = int(input("Введите номер операции от 1 до 5: "))
+            except ValueError:
+                print("Введено не число")
+                continue
+
+            if num not in menu:
+                print("Неверный номер операции")
+                continue
+
+            if num == 5:
+                print("Работа завершена")
+                break
+
+            if num == 4:
+                menu[num][1]()
+            else:
+                task = input("Введите задачу: ")
+                menu[num][1](task)
+
 
 todo = ToDoList()
-
-todo.add_task("Купить продукты")
-todo.add_task("Прочитать главу книги")
-todo.add_task("Сделать зарядку")
-
-todo.list_tasks()
-
-todo.complete_task("Купить продукты")
-todo.complete_task("Полить цветы")
-
-todo.list_tasks()
-
-todo.remove_task("Сделать зарядку")
-todo.remove_task("Полить цветы")
-
-todo.list_tasks()
+todo.main()
