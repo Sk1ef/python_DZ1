@@ -33,7 +33,7 @@ except ValueError:
     print("Введите число")
 else:
     circle = Circle(r)
-    print(circle.area())
+    print(f"Площадь круга: {circle.area()}")
 
     rectangle = Rectangle(a, b)
-    print(rectangle.area())
+    print(f"Площадь прямоугольника: {rectangle.area()}")
