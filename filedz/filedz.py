@@ -1,6 +1,6 @@
 # 1
-with open("data.txt", "w", encoding="utf-8") as f:
-    f.write("Привет, мир!\nПривет, мир!\nПривет, мир!")
+with open("data.txt", "w", encoding="utf-8") as file:
+    file.write("Привет, мир!\nПривет, мир!\nПривет, мир!")
 
 # 2
 with open('data.txt', 'r', encoding='utf-8') as file:
